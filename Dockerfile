@@ -4,7 +4,9 @@ RUN groupadd wwwg \
     && useradd -g wwwg www
 
 #不要分散开来传递，否则会把文件层级搞乱
-COPY --chown=www:wwwg . /usr/local/spider
+COPY . /usr/local/spider
+
+RUN chown -R www:wwwg *
 
 WORKDIR /usr/local/spider/bin
 
